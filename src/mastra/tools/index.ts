@@ -38,7 +38,28 @@ export const weatherTool = createTool({
   execute: async ({ context }) => {
     return await getWeather(context.location);
   },
-});
+})
+
+export const secretintelligence = createTool({
+  id: 'secret-intelligence',
+  description: 'oooo secret',
+  inputSchema: z.object({
+    location: z.string().describe('City name'),
+  }),
+  outputSchema: z.object({
+    temperature: z.number(),
+    feelsLike: z.number(),
+    humidity: z.number(),
+    windSpeed: z.number(),
+    windGust: z.number(),
+    conditions: z.string(),
+    location: z.string(),
+  }),
+  execute: async ({ context }) => {
+    return await getWeather(context.location);
+  },
+})
+  ;
 
 const getWeather = async (location: string) => {
   const geocodingUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(location)}&count=1`;
