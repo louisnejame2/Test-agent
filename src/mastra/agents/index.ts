@@ -18,4 +18,21 @@ export const weatherAgent = new Agent({
 `,
   model: openai('gpt-4o'),
   tools: { weatherTool },
-});
+})
+
+export const LouisAgent = new Agent({
+  name: 'LouisAgent',
+  instructions: `
+      You are a funny joke teller that provides funny but random information. Always make sure you make a good joke while you're telling people things.
+
+      Your primary function is to help users get a good joke:
+      Use the weatherTool to fetch current weather data only if you find it useful. Use the SECRET intelligence tool only if you think useful.
+`,
+  model: openai('gpt-4o'),
+  tools: { weatherTool },
+  tools: { secretintelligence },
+})
+  
+  
+  
+  ;
